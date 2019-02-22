@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Games Locator!</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.0/bootstrap-slider.min.js"
+    integrity="sha256-G5ZTzV4wJSLf9AuZ3wMEJVZDp1MumYGrEw+JsAGHRXI=" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.6.0/css/bootstrap-slider.min.css"
+    integrity="sha256-D25WHQReXOtVfJZu6lFdpu3ZN4kvVA7/+Af5mPjYlbw=" crossorigin="anonymous" />
+
+  <script src="jscolor.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <script>
+
+    var stripinfo;
+
+    function startRefresh() {
+      getFile('stripdata.txt', function (response) {
+        document.getElementById("stripsizes").value = response;
+        updateStripInfo(response);
+      });
+      startSocket();
+    }
+
+    function updateStripInfo(data) {
+      var lines = data.split('\n');
+      var i = 0;
+      stripinfo = [];
+      for (line of lines) {
+        if (line.length) {
+          stripinfo.push(parseInt(line));
+        }
+        else {
+          break;
+        }
+      }
+      updateTable();
+    }
+
+    function setColor(led, color) {
+      //var formData = new FormData();
+      //formData.append(led, color);
+
+      ws.send(COLOR_UPDATE + JSON.stringify({ "led": led, "color": color }));
+    }
+
+    function getFile(filename, callfunc) {
+      fetch(filename).
+        then(function (response) {
+          return response.text();
+        })
+        .then(function (response) {
+          callfunc(response);
+        })
+        .catch(error => console.error("Error getting file:", error));
+    }
+
+
+    function saveLEDConfig() {
+      saveSize("/stripdata.txt", document.getElementById("stripsizes").value);
+    }
+
+    function saveSize(filename, sizeinfo) {
+      sizeinfo = sizeinfo.replace("\r", "");
+      if (sizeinfo.substring(sizeinfo.length - 1) != "\n") {
+        sizeinfo += "\n";
+      }
+
+      var formData = new FormData();
+      formData.append('data', new Blob([sizeinfo]), filename);
+      fetch('/edit', {
+        method: "POST",
+        body: formData
+      })
+        .then(function (res) { console.log("setFile:", filename, res) })
+        .catch(error => console.error("setFile Error:", error));
+    }
+
+    function lightled() {
+      var strip = this._strip;
+      var led = this._led;
+      console.log("Activate", strip, led);
+
+      var url = "update?" + strip + "=" + led;
+
+      fetch(url)
+        .then(function (response) {
+          console.log("Updating response", response);
+        })
+        .catch(error => console.error(error));
+    }
+
+    function updateTable() {
+      if (!stripinfo) {
+        console.log("Ain't got nothing... No table updates");
+        return;
+      }
+      var table = document.getElementById("table");
+      while (table.rows.length) {
+        table.rows[0].remove();
+      }
+
+      // Add in the headers
+      var row = table.insertRow(-1);
+      for (i = 0; i < stripinfo.length; i++) {
+        var cell = document.createElement('th');
+        cell.innerText = "Strip " + i;
+        row.appendChild(cell);
+      }
+
+      // Find the longest strip
+      var maxlen = 0;
+      for (len of stripinfo) {
+        if (len > maxlen) {
+          maxlen = len;
+        }
+      }
+
+      for (led = 0; led < maxlen; led++) {
+        var row = table.insertRow(-1);
+        for (strip = 0; strip < stripinfo.length; strip++) {
+          var cell = document.createElement('td');
+          if (led < stripinfo[strip]) {
+            var button = document.createElement('button');
+            button.innerText = led;
+            button._strip = strip;
+            button._led = led;
+            button.onclick = lightled;
+            cell.appendChild(button);
+          } else {
+            cell.innerText = "";
+          }
+          row.appendChild(cell);
+        }
+      }
+
+    }
+
+    // Websocket Stuff
+    var ws = null;
+    function ge(s) { return document.getElementById(s); }
+    function ce(s) { return document.createElement(s); }
+    function sendBlob(str) {
+      var buf = new Uint8Array(str.length);
+      for (var i = 0; i < str.length; ++i) buf[i] = str.charCodeAt(i);
+      ws.send(buf);
+    }
+
+    function startSocket() {
+      ws = new WebSocket('ws://' + document.location.host + '/ws', ['lights']);
+      ws.binaryType = "arraybuffer";
+      ws.onopen = function (e) {
+        console.log("Connected");
+      };
+      ws.onclose = function (e) {
+        console.log("Disconnected, will reconnect in 2 second");
+        setTimeout(function () {
+          startSocket();
+        }, 2000);
+      };
+      ws.onerror = function (e) {
+        console.log("WS Error", e);
+        ws.close();
+      };
+      ws.onmessage = function (e) {
+        var msg = "";
+        if (e.data instanceof ArrayBuffer) {
+          msg = "BIN:";
+          var bytes = new Uint8Array(e.data);
+          for (var i = 0; i < bytes.length; i++) {
+            msg += String.fromCharCode(bytes[i]);
+          }
+        } else {
+          msg = "TXT:" + e.data;
+        }
+        console.log(msg);
+      };
+    }
+
+    function doRainbow() {
+      fetch('/rainbow')
+        .then(function (response) {
+          console.log("Doing rainbow!");
+        })
+        .catch(error => console.error(error));
+    }
+  </script>
+</head>
+
+<body onLoad="startRefresh();">
+  <h1>Games Locator!</h1>
+  <h3>RGB LED's</h3>
+  <table class="table table-striped " id="table">
+  </table>
+
+  <button onclick="setScheme();" class="btn btn-primary" style="position: fixed;top: 10px;right: 10px;display: none;"
+    id="setschemebtn">Save State</button>
+  <p>&nbsp;</p>
+
+  <div class="card mb-4 shadow-sm">
+    <div class="card-header">
+      <h4 class="my-0 font-weight-normal">LED Configuration</h4>
+    </div>
+    <div class="card-body">
+      <h4>RGB LED strips</h4>
+      <textarea id="stripsizes">20</textarea>
+      <p>Number of LEDs per string, each strip on its own line</p>
+    </div>
+    <p><button type="button" class="btn btn-primary" onclick="saveLEDConfig();">Save (then manual Reboot)</button></p>
+  </div>
+  <div>
+  </div>
+</body>
+
+</html>

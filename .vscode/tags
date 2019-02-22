@@ -1,0 +1,87 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CONFIGURATORS_PATH	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^CONFIGURATORS_PATH = 'configurators'$/;"	kind:variable	line:23
+CONFIGURATORS_VERSIONS	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^CONFIGURATORS_VERSIONS = [$/;"	kind:variable	line:24
+DOCS_BRANCHES	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^DOCS_BRANCHES = [$/;"	kind:variable	line:19
+DOCS_PATH	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^DOCS_PATH = 'docs'$/;"	kind:variable	line:18
+FIRST_RELEASE_ID	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^FIRST_RELEASE_ID=3084382$/;"	kind:variable	line:17
+argparse	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^import argparse$/;"	kind:namespace	line:3
+argparse	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    import argparse$/;"	kind:namespace	line:126
+args	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^args = parser.parse_args()$/;"	kind:variable	line:11
+args	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    args = parser.parse_args()$/;"	kind:variable	line:162
+base64	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^import base64, sys, math$/;"	kind:namespace	line:5
+base_topic_arg	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    def base_topic_arg(s):$/;"	kind:function	line:132
+brand	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^brand = regex_brand_result.group(1).decode() if regex_brand_result else "unset (default is Homie)"$/;"	kind:variable	line:36
+cert_der	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^cert_der = ssl.PEM_cert_to_DER_cert(cert_pem)$/;"	kind:variable	line:15
+cert_pem	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^cert_pem = ssl.get_server_certificate((args.host, args.port))$/;"	kind:variable	line:14
+configurators_html	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^configurators_html = '<ul>'$/;"	kind:variable	line:116
+current_dir	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^current_dir = os.path.dirname(__file__)$/;"	kind:variable	line:29
+data	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^  data = {$/;"	kind:variable	line:90
+description	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^  description = 'release ' + version$/;"	kind:variable	line:88
+description	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^        description='ota firmware update scirpt for ESP8226 implemenation of the Homie mqtt IoT convention.')$/;"	kind:variable	line:129
+division	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^from __future__ import division, print_function$/;"	kind:namespace	line:3
+docs_index	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^docs_index = docs_index_template.substitute(documentation_html=documentation_html, configurators_html=configurators_html)$/;"	kind:variable	line:126
+docs_index_file	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^docs_index_file = open(output_dir + '\/index.html', 'w')$/;"	kind:variable	line:128
+docs_index_template	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^docs_index_template = string.Template(docs_index_template_html)$/;"	kind:variable	line:125
+docs_index_template_file	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^docs_index_template_file = open(current_dir + '\/docs_index_template.html')$/;"	kind:variable	line:123
+docs_index_template_html	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^docs_index_template_html = docs_index_template_file.read()$/;"	kind:variable	line:124
+documentation_html	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^documentation_html = '<ul>'$/;"	kind:variable	line:101
+firmware	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    firmware = bytearray()$/;"	kind:variable	line:167
+firmware_binary	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^firmware_binary = firmware_file.read()$/;"	kind:variable	line:21
+firmware_file	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^  firmware_file = open(sys.argv[1], "rb")$/;"	kind:variable	line:16
+firmware_parser.py	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	1;"	kind:file	line:1
+fw_buffer	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    fw_buffer = args.firmware.read()$/;"	kind:variable	line:165
+generate_configurators	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^def generate_configurators(data):$/;"	kind:function	line:50
+generate_docs	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^def generate_docs(data):$/;"	kind:function	line:33
+generate_docs.py	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	1;"	kind:file	line:1
+generated_configurators	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^generated_configurators = []$/;"	kind:variable	line:108
+generated_docs	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^generated_docs = []$/;"	kind:variable	line:73
+get-fingerprint.py	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	1;"	kind:file	line:1
+getopt	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import getopt$/;"	kind:namespace	line:11
+github_releases	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^github_releases = json.load(urllib2.urlopen('https:\/\/api.github.com\/repos\/homieiot\/homie-esp8266\/releases'))$/;"	kind:variable	line:31
+glob	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import glob$/;"	kind:namespace	line:9
+hashlib	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^import hashlib$/;"	kind:namespace	line:5
+json	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import json$/;"	kind:namespace	line:4
+main	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^def main(broker_host, broker_port, broker_username, broker_password, broker_ca_cert, base_topic, device_id, firmware):$/;"	kind:function	line:95
+math	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^import base64, sys, math$/;"	kind:namespace	line:5
+md5	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^md5 = hashlib.md5(cert_der).hexdigest()$/;"	kind:variable	line:17
+md5	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^from hashlib import md5$/;"	kind:namespace	line:6
+mqtt	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^import paho.mqtt.client as mqtt$/;"	kind:namespace	line:4
+name	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^name = regex_name_result.group(1).decode()$/;"	kind:variable	line:34
+on_connect	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^def on_connect(client, userdata, flags, rc):$/;"	kind:function	line:9
+on_message	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^def on_message(client, userdata, msg):$/;"	kind:function	line:22
+os	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import os$/;"	kind:namespace	line:14
+ota_updater.py	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	1;"	kind:file	line:1
+output_dir	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^output_dir = getopt.getopt(sys.argv[1:], 'o:')[0][0][1]$/;"	kind:variable	line:30
+paho	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^import paho.mqtt.client as mqtt$/;"	kind:namespace	line:4
+parser	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^parser = argparse.ArgumentParser(description='Compute SSL\/TLS fingerprints.')$/;"	kind:variable	line:7
+parser	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^    parser = argparse.ArgumentParser($/;"	kind:variable	line:128
+print_function	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^from __future__ import division, print_function$/;"	kind:namespace	line:3
+re	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^import re$/;"	kind:namespace	line:3
+regex_brand	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_brand = re.compile(b"\\xfb\\x2a\\xf5\\x68\\xc0(.+)\\x6e\\x2f\\x0f\\xeb\\x2d")$/;"	kind:variable	line:13
+regex_brand_result	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_brand_result = regex_brand.search(firmware_binary)$/;"	kind:variable	line:32
+regex_homie	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_homie = re.compile(b"\\x25\\x48\\x4f\\x4d\\x49\\x45\\x5f\\x45\\x53\\x50\\x38\\x32\\x36\\x36\\x5f\\x46\\x57\\x25")$/;"	kind:variable	line:10
+regex_name	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_name = re.compile(b"\\xbf\\x84\\xe4\\x13\\x54(.+)\\x93\\x44\\x6b\\xa7\\x75")$/;"	kind:variable	line:11
+regex_name_result	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_name_result = regex_name.search(firmware_binary)$/;"	kind:variable	line:24
+regex_version	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_version = re.compile(b"\\x6a\\x3f\\x3e\\x0e\\xe1(.+)\\xb0\\x30\\x48\\xd4\\x1a")$/;"	kind:variable	line:12
+regex_version_result	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^regex_version_result = regex_version.search(firmware_binary)$/;"	kind:variable	line:25
+sha1	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^sha1 = hashlib.sha1(cert_der).hexdigest()$/;"	kind:variable	line:18
+sha256	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^sha256 = hashlib.sha256(cert_der).hexdigest()$/;"	kind:variable	line:19
+shutil	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import shutil$/;"	kind:namespace	line:13
+ssl	../.piolibdeps/AsyncMqttClient_ID346/scripts/get-fingerprint/get-fingerprint.py	/^import ssl$/;"	kind:namespace	line:4
+string	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import string$/;"	kind:namespace	line:15
+subprocess	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import subprocess$/;"	kind:namespace	line:10
+sys	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import sys$/;"	kind:namespace	line:12
+sys	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^import sys$/;"	kind:namespace	line:4
+sys	../.piolibdeps/Homie/scripts/ota_updater/ota_updater.py	/^import base64, sys, math$/;"	kind:namespace	line:5
+tag_name	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^  tag_name = release['tag_name']$/;"	kind:variable	line:86
+tempfile	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import tempfile$/;"	kind:namespace	line:7
+urllib	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import urllib$/;"	kind:namespace	line:5
+urllib2	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import urllib2$/;"	kind:namespace	line:6
+version	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^  version = tag_name[1:]$/;"	kind:variable	line:87
+version	../.piolibdeps/Homie/scripts/firmware_parser/firmware_parser.py	/^version = regex_version_result.group(1).decode()$/;"	kind:variable	line:35
+zipfile	../.piolibdeps/Homie/.circleci/assets/generate_docs.py	/^import zipfile$/;"	kind:namespace	line:8

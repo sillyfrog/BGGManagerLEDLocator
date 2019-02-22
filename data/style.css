@@ -1,0 +1,8 @@
+body {
+    padding: 10px;
+}
+
+.slider.slider-horizontal {
+    width: 110px;
+    border-radius: 4px;
+ }
